@@ -1,0 +1,8 @@
+.outer{
+    background-color: lightcyan;
+}
+.row{
+    background-color: lightblue;
+    overflow-y: hidden;
+    padding-bottom:3.5rem;
+}

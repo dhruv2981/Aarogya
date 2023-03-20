@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Patients Booking
+{% endblock title %}
+
+{% block body %}
+
+<div class="container mt-3">
+<div class="row">
+
+<div class="col-md-5">
+<div class="card" style="width: 22rem;">
+  <img src="static/d1.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">AAROGYA</h5>
+    <hr>
+    <p class="card-text">Department diseases</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cardiology-:Heart related</li>
+    <li class="list-group-item">Dermatology-:Skin related</li>
+    <li class="list-group-item">Gastrology-:Digestion related</li>
+    <li class="list-group-item">General symptoms-:Fever,cold,cough</li>
+    <li class="list-group-item">Neurology-:Brain related</li>
+    <li class="list-group-item">Dental-:Teeth related</li>
+
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">Contact Us</a>
+    <a href="#" class="card-link">About US</a>
+  </div>
+</div>
+
+</div>
+<div class="col-md-2"></div>
+<div class="col-md-5">
+
+<h4 class="text-center bg-info text-white">Book Your Slot</h4>
+<br>
+
+
+{% with messages=get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+
+<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+    {{message}}
+
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+
+
+
+<form action="/patients" method="post" class="jumbotron">
+
+ 
+
+  <div class="form-group">
+
+    <input type="email" class="form-control" id="email" value={{current_user.email}} name="email" required>
+    <!--we want to display a value of email that is registered-->
+  </div>
+
+  <div class="form-group">
+  
+    <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+  
+  </div>
+
+ <div class="form-group">
+
+            
+                                      
+<select class="form-control" id="gender" name="gender"  required>
+        <option selected>Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Others">Others</option>
+ 
+      </select>
+ </div>
+
+ <div class="form-group">
+
+            
+                                      
+<select class="form-control" id="slot" name="slot"  required>
+        <option selected>Slot</option>
+        <option value="morning(9:00-10:00)">Morning(9:00-10:00)</option>
+        <option value="morning(10:00-11:00)">Morning(10:00-11:00)</option>
+        <option value="morning(11:00-12:00)">Morning(11:00-12:00)</option>
+        <option value="evening(3:00-4:00)">Evening(3:00-4:00)</option>
+        <option value="evening(4:00-5:00)">Evening(4:00-5:00)</option>
+        <option value="night(9:00-10:00)">Night(9:00-10:00)</option>
+        <option value="night(10:00-11:00)">Night(10:00-11:00)</option>
+ 
+      </select>
+ </div>
+
+  
+  <div class="form-group">
+    
+    <input type="date" class="form-control" name="date" placeholder="date" required>
+  
+  </div>
+  <div class="form-group">
+    
+    <input type="text" class="form-control" id="disease" name="disease" placeholder="Disease" required>
+  
+  </div>
+
+<div class="form-group">
+
+            
+                                      
+<select class="form-control" id="dept" name="dept"  required>
+        <option selected>Select Doctor Department</option>
+        <option value="Dermatology">Dermatology</option>
+        <option value="Cardiology">Cardiology</option>
+        <option value="Gastrology">Gastrology</option>
+        <option value="General symptoms">General symptoms</option>
+        <option value="General symptoms">Neurology</option>
+        
+      </select>
+ </div>
+
+  <div class="form-group">
+
+    <input type="number" class="form-control" id="number" name="number" placeholder="Phone Number" required>
+  
+  </div>
+
+  
+  <button type="submit" class="btn btn-info btn-sm btn-block">Book</button>
+</form>
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+{% endblock body %}

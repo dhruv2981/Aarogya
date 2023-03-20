@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Search
+{% endblock title %}
+{% block body %}
+{% with messages=get_flashed_messages(with_categories=true) %}
+<!--will display message only if there is also a category-->
+{% if messages %}
+<!--will get executed if thee is any message-->
+{% for category, message in messages %}
+<!--category here refer to colour,mesages are within the flash function-->
+
+
+<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+    {{message}}
+
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+
+
+<table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">DISEASE</th>
+        <th scope="col">SYMPTOMS</th>
+        <th scope="col">MEDICINES</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    {% for g in give %}
+      <tr>
+        <th scope="row">{{g.dis}}</th>
+        <td>{{g.symptoms}}</td>
+        <td>{{g.medicines}}</td>
+      </tr>
+  {% endfor %}
+    
+    </tbody>
+  </table>
+  
+
+{% endblock body %} 

@@ -1,0 +1,7 @@
+.myclass{
+    background-color:lightcyan;}
+.outer{
+        background-color: lightcyan;
+        padding-bottom: 15rem;
+        overflow-y: hidden;
+    }
